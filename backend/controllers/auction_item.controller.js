@@ -195,9 +195,19 @@ export const republishItem = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Auction starting time must be less than ending time", 400));
   }
 
+  if(auctionItem.highestBidder){
+    const highestBidder = await User.findById(auctionItem.highestBidder);
+
+    highestBidder.moneySpent -= auctionItem.currentBid;
+    highestBidder.auctionsWon -= 1;
+
+    highestBidder.save();
+  }
+
   data.bids = []; 
   data.commisionCalculated = false; 
-
+  data.currentBid  = 0;
+  data.highestBidder = null;
   auctionItem = await Auction.findByIdAndUpdate(id, data, {new: true, runValidators:true, useFindAndModify: false});
 
   const createdBy = await User.findByIdAndUpdate(req.user._id, {unpaidCommission: 0}, { new: true, runValidators: false, useFindAndModify: false});
