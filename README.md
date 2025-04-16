@@ -13,32 +13,34 @@ This backend powers functionalities such as:
 
 ## 📁 Folder Structure
 
-📦backend 
-├── 📂config # Environment config & constants │ └── config.env 
-├── 📂controllers # Core business logic for each route 
-      ├── auction_item.controller.js │ 
-      ├── bid.controller.js │ 
-      ├── commision.controller.js │ 
-      ├── superAdmin.controller.js │ 
-      └── user.controller.js 
-├── 📂database # DB connection file 
-    │ └── connection.js 
-├── 📂middlewares # Middleware functions │ 
-                                          ├── auth.middleware.js │ 
-                                          ├── catchAsyncErrors.middleware.js │ 
-                                          ├── checkAuctionEndTime.middleware.js │ 
-                                          ├── error.middleware.js 
-                                          │ └── trackCommisionStatus.middleware.js
-├── 📂routes # API endpoints │ 
-    ├── auction_item.routes.js │ 
-    ├── bid.routes.js │ 
-    ├── commisionm.routes.js │ 
-    ├── superAdmin.routes.js │ 
-    └── user.routes.js 
-├── 📂utils # Utility functions (e.g. token, mail, etc.) 
+backend/
+├── config/                      # 🌐 Environment variables and config
+│   └── config.env
+├── controllers/                # 🧠 Route logic controllers
+│   ├── auction_item.controller.js
+│   ├── bid.controller.js
+│   ├── commision.controller.js
+│   ├── superAdmin.controller.js
+│   └── user.controller.js
+├── database/                   # 🍃 MongoDB connection setup
+│   └── connection.js
+├── middlewares/                # 🛡️ Custom middlewares
+│   ├── auth.middleware.js
+│   ├── catchAsyncErrors.middleware.js
+│   ├── checkAuctionEndTime.middleware.js
+│   ├── error.middleware.js
+│   └── trackCommisionStatus.middleware.js
+├── routes/                     # 🚏 API route declarations
+│   ├── auction_item.routes.js
+│   ├── bid.routes.js
+│   ├── commisionm.routes.js
+│   ├── superAdmin.routes.js
+│   └── user.routes.js
+├── utils/                      # 🧰 Utility functions (token, mail, etc.)
+├── app.js                      # 🚀 Express app setup
+├── server.js                   # 🔑 App entry point
+└── package.json                # 📦 NPM configuration
 
-├── server.js # Entry point 
-└── app.js #
 
 
 
