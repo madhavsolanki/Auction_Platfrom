@@ -13,7 +13,7 @@ This backend powers functionalities such as:
 
 ## 📁 Folder Structure
 
-backend/
+bbackend/
 ├── config/                      # 🌐 Environment variables and config
 │   └── config.env
 ├── controllers/                # 🧠 Route logic controllers
