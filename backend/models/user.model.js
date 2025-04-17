@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     selected: false,
-    minLength: [8, "Password must caontain at least 8 characters."],
-    maxLength: [32, "Password cannot exceed 32 characters."],
+    minLength: [8, "Password must caontain at least 8 characters."]
   },
   email: String,
   address: String,

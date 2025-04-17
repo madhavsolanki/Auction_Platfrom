@@ -2,6 +2,7 @@ import {v2 as cloudinary} from "cloudinary";
 import { catchAsyncErrors } from "../middlewares/catchAsyncError.middleware.js";
 import User from "../models/user.model.js";
 import Auction from "../models/auction.model.js";
+import Bid from "../models/bid.model.js";
 import ErrorHandler from "../middlewares/error.middleware.js";
 import mongoose from "mongoose";
 
@@ -209,6 +210,8 @@ export const republishItem = catchAsyncErrors(async (req, res, next) => {
   data.currentBid  = 0;
   data.highestBidder = null;
   auctionItem = await Auction.findByIdAndUpdate(id, data, {new: true, runValidators:true, useFindAndModify: false});
+
+  await Bid.deleteMany({auctionItem : auctionItem._id});
 
   const createdBy = await User.findByIdAndUpdate(req.user._id, {unpaidCommission: 0}, { new: true, runValidators: false, useFindAndModify: false});
 

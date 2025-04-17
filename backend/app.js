@@ -10,7 +10,8 @@ import auctionItemRouter from './routes/auction_item.routes.js';
 import bidRouter from "./routes/bid.routes.js";
 import commisionRoutes from "./routes/commisionm.routes.js";
 import superAdminRouter from "./routes/superAdmin.routes.js";
-import { endedAuctionCron } from "./automation/endedAuctionCron.js"
+import { endedAuctionCron } from "./automation/endedAuctionCron.js" ;
+import { verifyCommisionCron } from "./automation/verifyCommisionCron.js";
 
 const app = express();
 
@@ -44,8 +45,8 @@ app.use("/api/v1/commision", commisionRoutes);
 app.use("/api/v1/superadmin", superAdminRouter);
 
 
-// endedAuctionCron();
-
+endedAuctionCron();
+verifyCommisionCron();
 // DB connection
 connection();
 
